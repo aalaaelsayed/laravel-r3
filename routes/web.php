@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\controllers\ExampleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,15 +22,18 @@ Route::fallback(function(){
     return redirect('/');
 });
 
-Route::get('about',function(){
+Route::get('login',function(){
 
-    return view('about');
+    return view('login');
 });
 //////////////////
-Route::get('contact_us',function(){
+Route::post('logged',function(){
 
-    return view('contact-us');
-});
+    return 'your email is : </br>'.'your password is';
+})->name('logged');
+//////////////////
+Route::get('control',[ExampleController::class,'show']);
+Route::post('control',[ExampleController::class,'data']);
 
 //////////////////////
 
