@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::fallback(function(){
     return redirect('/');
 });
+
 Route::get('about',function(){
 
     return view('about');
