@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\controllers\ExampleController;
+use App\Http\controllers\CarController;
+use App\Http\controllers\PostsController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +40,9 @@ Route::get('control',[ExampleController::class,'show']);
 Route::post('control',[ExampleController::class,'data']);
 
 //////////////////////
+// store data into car table
+//Route::get('storeCar',[CarController::class,'store']);
+
 
 Route::prefix('blog')->group(function(){
     //blog home
@@ -65,3 +72,13 @@ Route::get('medical',function(){
     return'medical for blog';
 });
 });
+// routes for cars
+Route::get('createCar',[CarController::class,'create'])->name('createCar');
+Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
+Route::get('cars',[CarController::class,'index']);
+// routes for posts
+Route::get('createPost',[PostsController::class,'create'])->name('createPost');
+Route::post('storePost',[PostsController::class,'store'])->name('storePost');
+Route::get('posts',[PostsController::class,'index']);
+
+
