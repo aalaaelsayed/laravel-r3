@@ -20,8 +20,10 @@
         <th>post_title</th>
         <th>description</th>
         <th>auther</th>
-        <th>timestamps</th>
+        <th>created_at	</th>
         <th>published</th>
+        <th>edit</th>
+        <th>show</th>
 
       </tr>
     </thead>
@@ -32,8 +34,10 @@
         <td>{{ $post->title }}</td>
         <td>{{ $post->description }}</td>
         <td>{{ $post->auther }} </td>
-        <td>{{ $post->timestamps }} </td>
+        <td>{{ $post->created_at	 }} </td>
         <td>@if($post->published)yes @else no @endif</td>
+        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
+        <td><a href="showPost/{{ $post->id }}">show</a></td>
 
       </tr>
      @endforeach

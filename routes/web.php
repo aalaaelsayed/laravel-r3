@@ -75,10 +75,19 @@ Route::get('medical',function(){
 // routes for cars
 Route::get('createCar',[CarController::class,'create'])->name('createCar');
 Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
+Route::get('updateCar/{id}',[CarController::class,'edit']);
+Route::put('update/{id}',[CarController::class,'update'])->name('update');
+Route::get('showCar/{id}',[CarController::class,'show'])->name('showCar');
+
+
 Route::get('cars',[CarController::class,'index']);
 // routes for posts
 Route::get('createPost',[PostsController::class,'create'])->name('createPost');
 Route::post('storePost',[PostsController::class,'store'])->name('storePost');
 Route::get('posts',[PostsController::class,'index']);
+Route::get('updatePost/{id}',[PostsController::class,'edit']);
+
+Route::put('update/{id}',[PostsController::class,'update'])->name('update');
+Route::get('showPost/{id}',[PostsController::class,'show'])->name('showCar');
 
 

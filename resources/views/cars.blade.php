@@ -20,6 +20,10 @@
         <th>description</th>
         <th>published</th>
         <th>published</th>
+        <th>edit</th>
+        <th>show</th>
+
+
 
       </tr>
     </thead>
@@ -30,8 +34,11 @@
         <td>{{ $car->description }}</td>
         <td>{{ $car->published }} </td>
         <td>@if($car->published)yes @else no @endif</td>
+        <td><a href="updateCar/{{ $car->id }}">Edit</a></td>
+        <td><a href="showCar/{{ $car->id }}">show</a></td>
 
       </tr>
+
      @endforeach
     </tbody>
   </table>
