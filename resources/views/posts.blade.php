@@ -24,6 +24,8 @@
         <th>published</th>
         <th>edit</th>
         <th>show</th>
+        <th>delete</th>
+
 
       </tr>
     </thead>
@@ -38,6 +40,7 @@
         <td>@if($post->published)yes @else no @endif</td>
         <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
         <td><a href="showPost/{{ $post->id }}">show</a></td>
+        <td><a href="deletePost/{{ $post->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
 
       </tr>
      @endforeach

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>trashed Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,17 +11,14 @@
 <body>
 @include('includes.nav')
 <div class="container">
-  <h2> car list</h2>
+  <h2> trashed list</h2>
   <p></p>            
   <table class="table table-hover">
     <thead>
       <tr>
         <th>title</th>
         <th>description</th>
-        <th>published</th>
-        <th>published</th>
-        <th>edit</th>
-        <th>show</th>
+        <th>restore</th>
         <th>delete</th>
 
 
@@ -34,11 +31,9 @@
       <tr>
         <td>{{ $car->title }}</td>
         <td>{{ $car->description }}</td>
-        <td>{{ $car->published }} </td>
-        <td>@if($car->published)yes @else no @endif</td>
-        <td><a href="updateCar/{{ $car->id }}">Edit</a></td>
-        <td><a href="showCar/{{ $car->id }}">show</a></td>
-        <td><a href="deleteCar/{{ $car->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+     
+        <td><a href="forceDelete/{{ $car->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+        <td><a href="restoreCar/{{ $car->id }}">restoreCar</a></td>
 
       </tr>
 

@@ -52,7 +52,14 @@ class PostsController extends Controller
 
         //$posts->save();
         //return'data inserted successfully';
-        $data =$request->only($this->columns);
+       // $data =$request->only($this->columns);
+       $data =$request->validate([
+        'title'=>'required|string|max:50',
+        'description'=>'required|string',
+        'auther'=>'required|string',
+
+        
+        ]);
 $data['published'] =isset($request->published);
 post::create($data);
 return redirect('posts');
@@ -96,5 +103,30 @@ return redirect('posts');
     public function destroy(string $id)
     {
         //
+        post::where ('id',$id) ->delete();
+        return redirect('posts');
+    }
+    //////////////////////////////////////////////////////////////////
+
+    public function trashed()
+    {
+        //
+      $posts = Post::onlyTrashed()->get();
+      return view ('trashedpost',compact("posts"));
+    }
+    //////////////////////////////////////////////////////////////////
+    public function forceDelete(string $id)
+    {
+        //
+        post::where ('id',$id) ->forceDelete();
+        return redirect('posts');
+    }
+        //////////////////////////////////////////////////////////////////
+
+    public function restore(string $id)
+    {
+        //
+        post::where ('id',$id) ->restore();
+        return redirect('posts');
     }
 }
