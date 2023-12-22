@@ -57,9 +57,9 @@ Route::get('science',function(){
     return'science for blog';
 });
 /////////////////////
-Route::get('math',function(){
+Route::get('555',function(){
 
-    return'math for blog';
+    return view('test');
 });
 ///////////////////////
 Route::get('sports',function(){
@@ -71,6 +71,15 @@ Route::get('medical',function(){
 
     return'medical for blog';
 });
+
+});
+Route::get('test',function(){
+
+    return view('test');
+});
+Route::get('image',function(){
+
+    return view('image');
 });
 // routes for cars
 Route::get('createCar',[CarController::class,'create'])->name('createCar');
@@ -93,8 +102,10 @@ Route::get('deletePost/{id}',[PostsController::class,'destroy']);
 Route::get('trashedpost',[PostsController::class,'trashed'])->name('trashedpost');
 Route::get('forceDeletepost/{id}',[PostsController::class,'forceDelete'])->name('forceDeletepost');
 Route::get('restorepost/{id}',[PostsController::class,'restore'])->name('restorePost');
-Route::put('update/{id}',[PostsController::class,'update'])->name('update');
+Route::put('updatep/{id}',[PostsController::class,'update'])->name('updatep');
 Route::get('showPost/{id}',[PostsController::class,'show'])->name('showCar');
 
+/////////////////
+Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUpload');
 
 
