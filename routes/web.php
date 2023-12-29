@@ -73,14 +73,14 @@ Route::get('medical',function(){
 });
 
 });
-Route::get('test',function(){
+Route::get('testHOME',function(){
 
-    return view('test');
-});
-Route::get('image',function(){
+    return view('testHOME');
+})->name('testHOME');
+Route::get('404',function(){  return view('404');})->name('404');
+Route::get('Contact',function(){ return view('Contact');})->name('Contact');
 
-    return view('image');
-});
+Route::get('image',function(){return view('image');});
 // routes for cars
 Route::get('createCar',[CarController::class,'create'])->name('createCar');
 Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
