@@ -20,6 +20,8 @@
         <th>description</th>
         <th>published</th>
         <th>published</th>
+        <th>category</th>
+
         <th>edit</th>
         <th>show</th>
         <th>delete</th>
@@ -36,6 +38,7 @@
         <td>{{ $car->description }}</td>
         <td>{{ $car->published }} </td>
         <td>@if($car->published)yes @else no @endif</td>
+        <td>{{ $car->category->cat_name  }} </td>
         <td><a href="updateCar/{{ $car->id }}">Edit</a></td>
         <td><a href="showCar/{{ $car->id }}">show</a></td>
         <td><a href="deleteCar/{{ $car->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>

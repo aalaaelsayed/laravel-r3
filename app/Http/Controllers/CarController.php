@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Category;
+
 use App\models\Car;
 use App\Traits\Common;
 
@@ -26,7 +28,8 @@ class CarController extends Controller
      */
     public function create()
     {
-    return view ('addCar');
+        $categories =Category::get();
+    return view ('addCar', compact('categories'));
     }
 
     /**
@@ -53,6 +56,7 @@ $data =$request->validate([
 'title'=>'required|string|max:50',
 'description'=>'required|string',
 'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+'category_id'=>'required',
 ] ,$messages);
 $fileName = $this->uploadFile($request->image, 'assets/images');    
         $data['image'] = $fileName;
@@ -80,8 +84,9 @@ return redirect('cars');
     {
         //
         $car = Car::findOrFail($id);
-        return view ('updateCar',compact("car"));
+        $categories=Category::get();
 
+        return view ('updateCar',compact("car","categories"));
     }
 
     /**
@@ -110,6 +115,7 @@ return redirect('cars');
                 $data = $request->validate([
                     'title'=>'required|string|max:50',
                     'description'=>'required|string',
+                    'category_id'=>'required',
                 ], $messages);
             if ($request->hasFile('image')) {
                 // Upload  image
@@ -117,6 +123,8 @@ return redirect('cars');
                 $data['image'] = $fileName;
             }
                 $data['published'] = isset($request->published);
+
+
                 Car::where('id',$id)->update($data);
                 return redirect('cars');
 }

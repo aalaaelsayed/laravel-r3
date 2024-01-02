@@ -11,6 +11,8 @@
     <h5>{{ $car->updated_at  }}</h5>
     <p>{{ $car->description  }}</p>
     <p>  {{($car->published)?"checked":""}}</p>
+    <p>{{ $car->category->cat_name  }}</p>
+
 
 
 
