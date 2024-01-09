@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Car;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**

@@ -18,9 +18,9 @@ use App\Http\controllers\PostsController;
 |
 */
 
-//Route::get('/', function () {
- //   return view('welcome');
-//});
+Route::get('/', function () {
+ return view('welcome');
+});
 /////////////////////////////
 Route::fallback(function(){
     return redirect('/');
@@ -82,7 +82,8 @@ Route::get('Contact',function(){ return view('Contact');})->name('Contact');
 
 Route::get('image',function(){return view('image');});
 // routes for cars
-Route::get('createCar',[CarController::class,'create'])->name('createCar');
+//Route::get('createCar',[CarController::class,'create'])->name('createCar');
+Route::get('createCar',[CarController::class,'create'])->middleware('verified')->name('createCar');
 Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
 Route::get('updateCar/{id}',[CarController::class,'edit']);
 Route::put('update/{id}',[CarController::class,'update'])->name('update');
@@ -104,8 +105,12 @@ Route::get('forceDeletepost/{id}',[PostsController::class,'forceDelete'])->name(
 Route::get('restorepost/{id}',[PostsController::class,'restore'])->name('restorePost');
 Route::put('updatep/{id}',[PostsController::class,'update'])->name('updatep');
 Route::get('showPost/{id}',[PostsController::class,'show'])->name('showCar');
-
+Auth::routes(['verify'=>true]);
 /////////////////
 Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUpload');
 
+Auth::routes(['verify'=>true]);
 
+//Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
