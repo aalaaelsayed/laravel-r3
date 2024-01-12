@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\controllers\ExampleController;
 use App\Http\controllers\CarController;
 use App\Http\controllers\PostsController;
+use App\Http\controllers\WebController;
+use App\Mail\DemoMail;
+use Illuminate\Support\Facades\Mail;
 
 
 /*
@@ -36,7 +39,7 @@ Route::post('logged',function(){
     return 'your email is : </br>'.'your password is';
 })->name('logged');
 //////////////////
-Route::get('control',[ExampleController::class,'show']);
+//Route::get('test20',[ExampleController::class,'createSession']);
 Route::post('control',[ExampleController::class,'data']);
 
 //////////////////////
@@ -77,8 +80,18 @@ Route::get('testHOME',function(){
 
     return view('testHOME');
 })->name('testHOME');
-Route::get('404',function(){  return view('404');})->name('404');
-Route::get('Contact',function(){ return view('Contact');})->name('Contact');
+//////////////////////////////////////////////////////////////////
+Route::get('404',[WebController::class,'error'])->name('404');
+Route::get('about',[WebController::class,'about'])->name('about');
+//Route::get('test20',[WebController::class,'test50'])->name('test20');
+Route::post('test30',[WebController::class,'sandemail'])->name('test30');
+Route::get('contact',[WebController::class,'Contact'])->name('contact');
+
+
+
+Route::get('home',[WebController::class,'home'])->name('home');
+
+
 
 Route::get('image',function(){return view('image');});
 // routes for cars

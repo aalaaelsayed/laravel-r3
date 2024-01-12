@@ -18,4 +18,11 @@ class ExampleController extends Controller
         $request->image->move($path, $file_name);
         return 'Uploaded';
     }
+    public function createSession(){
+
+        session()->flash('testSession', ' First Laravel session');
+       // session()->forget('testSession');
+
+return 'session Created';
+    }
 }

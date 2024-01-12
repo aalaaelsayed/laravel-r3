@@ -63,7 +63,7 @@ $fileName = $this->uploadFile($request->image, 'assets/images');
 $data['published'] =isset($request->published);
 
 
-car::create($data);
+Car::create($data);
 return redirect('cars');
     }
 

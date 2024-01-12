@@ -9,7 +9,7 @@
 							<ul class="top-link">
 								<li><a href="#">About</a></li>
 								<li><a href="#">Doctors</a></li>
-								<li><a href="{{ Route ('Contact') }}">Contact</a></li>
+								<li><a href="{{ Route ('contact') }}">Contact</a></li>
 								<li><a href="#">FAQ</a></li>
 							</ul>
 							<!-- End Contact -->
@@ -63,7 +63,7 @@
 													<li><a href="blog-single.html">Blog Details</a></li>
 												</ul>
 											</li>
-											<li><a href="{{ Route ('Contact') }}">Contact Us</a></li>
+											<li><a href="{{ Route ('contact') }}">Contact Us</a></li>
 										</ul>
 									</nav>
 								</div>
