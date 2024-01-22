@@ -16,18 +16,21 @@ use App\models\Email;
 class DemoMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $name, $email, $phone, $subject, $message;
+    //public $name, $email, $phone, $subject, $message;
+    public $data;
         /**
      * Create a new message instance.
      */
 	
-	public function __construct($name, $email, $phone, $subject, $message)
+	public function __construct($data)
 	{
-		$this->name = $name;
-		$this->email = $email;
-		$this->phone = $phone;
-		$this->subject = $subject;
-        $this->message = $message;
+        $this->data = $data;
+
+		// $this->data = $name;
+		// $this->email = $email;
+		// $this->phone = $phone;
+		// $this->subject = $subject;
+        // $this->message = $message;
 	}
     // public function build( )
     // {
@@ -42,8 +45,10 @@ class DemoMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('aalaa@example.com', 'aalaaelsayed'),
+          //  from: new Address('aalaa@example.com', 'aalaaelsayed'),
            // subject: 'Demo Mail',
+           from: new Address($this->data['email'], $this->data['name']),
+           subject: $this->data['subject'] . ' - Contact Us',
         );
     }
 
@@ -53,14 +58,18 @@ class DemoMail extends Mailable
     public function content(): Content
     {
         return new Content(
+            // markdown: 'emails.test20',
+            // with:[
+            //     'name'=>$this->name,
+            //     'email'=>$this->email,
+            //     'phone'=>$this->phone,
+            //     'subject'=>$this->subject,
+            //     'message'=>$this->message,
+
+            // ]
             markdown: 'emails.test20',
             with:[
-                'name'=>$this->name,
-                'email'=>$this->email,
-                'phone'=>$this->phone,
-                'subject'=>$this->subject,
-                'message'=>$this->message,
-
+                $this->data,
             ]
         );
     }

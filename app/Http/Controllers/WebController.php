@@ -42,15 +42,22 @@ class WebController extends Controller
 
 
 //         ] ;
+$data = $request->validate([
+    'name'=>'required|string|max:50',
+    'email'=> 'required|string',
+    'phone' => 'required|string',
+    'subject' => 'required',
+    'message' => 'required',
+   ]);
     
   
-      
-            Mail::to( 'alaa@email.com')->send( new DemoMail(
-                $request->name,
-                $request->email,
-                $request->phone,
-                $request->subject,
-                $request->message,
+   Email::create($data);
+            Mail::to( 'alaa@email.com')->send( new DemoMail($data
+                // $request->name,
+                // $request->email,
+                // $request->phone,
+                // $request->subject,
+                // $request->message,
 
             ));
             return "mail sent!";

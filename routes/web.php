@@ -95,8 +95,13 @@ Route::get('home',[WebController::class,'home'])->name('home');
 
 Route::get('image',function(){return view('image');});
 // routes for cars
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
 //Route::get('createCar',[CarController::class,'create'])->name('createCar');
-Route::get('createCar',[CarController::class,'create'])->middleware('verified')->name('createCar');
+Route::get('createCar',[CarController::class,'create'])->name('createCar');
 Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
 Route::get('updateCar/{id}',[CarController::class,'edit']);
 Route::put('update/{id}',[CarController::class,'update'])->name('update');
@@ -106,6 +111,7 @@ Route::get('trashed',[CarController::class,'trashed'])->name('trashed');
 Route::get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
 Route::get('restoreCar/{id}',[CarController::class,'restore'])->name('restoreCar');
 Route::get('cars',[CarController::class,'index']);
+});
 // routes for posts
 
 Route::get('posts',[PostsController::class,'index']);
